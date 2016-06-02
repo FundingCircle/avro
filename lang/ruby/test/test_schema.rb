@@ -154,8 +154,8 @@ class TestSchema < Test::Unit::TestCase
       ]}
      SCHEMA
 
-    schema.to_avro["fields"].each do |field|
-      assert_equal nil, field.fetch("default")
+    schema.fields.each do |field|
+      assert_equal nil, field.default
     end
   end
 
@@ -168,8 +168,8 @@ class TestSchema < Test::Unit::TestCase
       ]}
      SCHEMA
 
-    schema.to_avro["fields"].each do |field|
-      assert_equal false, field.has_key?("default")
+    schema.fields.each do |field|
+      assert_equal :ignore, field.default
     end
   end
 end

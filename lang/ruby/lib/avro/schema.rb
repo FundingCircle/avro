@@ -31,6 +31,7 @@ module Avro
     INT_MAX_VALUE = (1 << 31) - 1
     LONG_MIN_VALUE = -(1 << 63)
     LONG_MAX_VALUE = (1 << 63) - 1
+    IGNORE = :ignore
 
     def self.parse(json_string)
       real_parse(MultiJson.load(json_string), {})
@@ -181,8 +182,8 @@ module Avro
           field_data.each do |field|
           if field.respond_to?(:[]) # TODO(jmhodges) wtffffff
             field_attrs = {
-              type: type = field['type'],
-              name: name = field['name'],
+              type: field['type'],
+              name: field['name'],
               order: field['order'],
               names: names,
               namespace: namespace
