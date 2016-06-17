@@ -155,7 +155,7 @@ class TestSchema < Test::Unit::TestCase
      SCHEMA
 
     schema.fields.each do |field|
-      assert_equal nil, field.default
+      assert_equal nil, field.attrs.fetch(:default)
     end
   end
 
@@ -169,7 +169,7 @@ class TestSchema < Test::Unit::TestCase
      SCHEMA
 
     schema.fields.each do |field|
-      assert_equal :ignore, field.default
+      assert_equal false, field.attrs.has_key?(:default)
     end
   end
 end

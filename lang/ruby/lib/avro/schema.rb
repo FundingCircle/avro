@@ -31,7 +31,6 @@ module Avro
     INT_MAX_VALUE = (1 << 31) - 1
     LONG_MIN_VALUE = -(1 << 63)
     LONG_MAX_VALUE = (1 << 63) - 1
-    IGNORE = :ignore
 
     def self.parse(json_string)
       real_parse(MultiJson.load(json_string), {})
