@@ -26,7 +26,7 @@ class TestSchema < Test::Unit::TestCase
   end
 
   def assert_failed_validation(messages)
-    error = assert_raise(Avro::SchemaValidator::ValidationError) { yield }
+    error = assert_raise(Avro::ValidationError) { yield }
 
     assert_messages = [messages].flatten
     result_errors = error.result.errors
@@ -390,7 +390,7 @@ class TestSchema < Test::Unit::TestCase
                               { type: 'int', name: 'age' }
                             ])
 
-    exception = assert_raise(Avro::SchemaValidator::ValidationError) do
+    exception = assert_raise(Avro::ValidationError) do
       validate!(schema, [nil, 'e'])
     end
     assert_equal 2, exception.result.errors.size

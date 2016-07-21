@@ -94,7 +94,7 @@ module Avro
     def self.validate(expected_schema, datum)
       SchemaValidator.validate!(expected_schema, datum)
       true
-    rescue SchemaValidator::ValidationError
+    rescue ValidationError
       false
     end
 
