@@ -19,22 +19,22 @@ module Avro
     extend Validation::Helpers
 
     VALIDATORS = {
-      array: Validation::ArrayValidator,
-      boolean: Validation::BooleanValidator,
-      bytes: Validation::StringValidator,
-      double: Validation::FloatValidator,
-      enum: Validation::EnumValidator,
-      error: Validation::RecordValidator,
-      fixed: Validation::FixedValidator,
-      float: Validation::FloatValidator,
-      int: Validation::IntValidator,
-      long: Validation::LongValidator,
-      map: Validation::MapValidator,
-      null: Validation::NullValidator,
-      record: Validation::RecordValidator,
-      request: Validation::RecordValidator,
-      string: Validation::StringValidator,
-      union: Validation::UnionValidator,
+      array: Validation::ArrayValidator.new,
+      boolean: Validation::BooleanValidator.new,
+      bytes: Validation::StringValidator.new,
+      double: Validation::FloatValidator.new,
+      enum: Validation::EnumValidator.new,
+      error: Validation::RecordValidator.new,
+      fixed: Validation::FixedValidator.new,
+      float: Validation::FloatValidator.new,
+      int: Validation::IntValidator.new,
+      long: Validation::LongValidator.new,
+      map: Validation::MapValidator.new,
+      null: Validation::NullValidator.new,
+      record: Validation::RecordValidator.new,
+      request: Validation::RecordValidator.new,
+      string: Validation::StringValidator.new,
+      union: Validation::UnionValidator.new,
     }.freeze
     private_constant :VALIDATORS
 
