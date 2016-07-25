@@ -16,6 +16,43 @@
 
 module Avro
   class SchemaValidator
+    class Result
+      attr_reader :errors
+
+      def initialize
+        @errors = []
+      end
+
+      def <<(error)
+        @errors << error
+      end
+
+      def add_error(path, message)
+        self << "at #{path} #{message}"
+      end
+
+      def failure?
+        @errors.any?
+      end
+
+      def to_s
+        errors.join("\n")
+      end
+    end
+
+    class ValidationError < StandardError
+      attr_reader :result
+
+      def initialize(result = Result.new)
+        @result = result
+        super
+      end
+
+      def to_s
+        result.to_s
+      end
+    end
+
     extend Validation::Helpers
 
     VALIDATORS = {

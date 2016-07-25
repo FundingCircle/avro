@@ -8,7 +8,7 @@ module Avro
           SchemaValidator.validate_recursive(expected_schema.schemas.first, datum, path, result)
         else
           sub_results_by_type = expected_schema.schemas.map do |schema|
-            r = Result.new
+            r = SchemaValidator::Result.new
             SchemaValidator.validate_recursive(schema, datum, path, r)
             { type: schema.type_sym, result: r }
           end

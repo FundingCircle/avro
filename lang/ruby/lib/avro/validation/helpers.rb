@@ -1,43 +1,4 @@
 module Avro
-  class Result
-    attr_accessor :errors
-
-    def initialize
-      @errors = []
-    end
-
-    def <<(error)
-      @errors << error
-    end
-
-    def add_error(path, message)
-      self << "at #{path} #{message}"
-    end
-
-    def failure?
-      @errors.any?
-    end
-
-    def to_s
-      errors.map(&:to_s).join("\n")
-    end
-  end
-
-  class ValidationError < StandardError
-    attr_reader :result
-
-    def initialize(result = Result.new)
-      @result = result
-      super
-    end
-
-    def to_s
-      result.to_s
-    end
-  end
-
-  TypeMismatchError = Class.new(ValidationError)
-
   module Validation
     module Helpers
       ROOT_IDENTIFIER = '.'.freeze
