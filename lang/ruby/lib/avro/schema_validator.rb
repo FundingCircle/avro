@@ -20,20 +20,20 @@ module Avro
 
     VALIDATORS = {
       array: Validation::ArrayValidator.new,
-      boolean: Validation::BooleanValidator.new,
-      bytes: Validation::StringValidator.new,
-      double: Validation::FloatValidator.new,
+      boolean: Validation::TypeValidator.new([TrueClass, FalseClass]),
+      bytes: Validation::TypeValidator.new([String]),
+      double: Validation::TypeValidator.new([Float, Fixnum, Bignum]),
       enum: Validation::EnumValidator.new,
       error: Validation::RecordValidator.new,
       fixed: Validation::FixedValidator.new,
-      float: Validation::FloatValidator.new,
+      float: Validation::TypeValidator.new([Float, Fixnum, Bignum]),
       int: Validation::IntValidator.new,
       long: Validation::LongValidator.new,
       map: Validation::MapValidator.new,
-      null: Validation::NullValidator.new,
+      null: Validation::TypeValidator.new([NilClass]),
       record: Validation::RecordValidator.new,
       request: Validation::RecordValidator.new,
-      string: Validation::StringValidator.new,
+      string: Validation::TypeValidator.new([String]),
       union: Validation::UnionValidator.new,
     }.freeze
     private_constant :VALIDATORS
