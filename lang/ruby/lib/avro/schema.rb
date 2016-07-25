@@ -181,8 +181,8 @@ module Avro
           field_data.each do |field|
           if field.respond_to?(:[]) # TODO(jmhodges) wtffffff
             field_attrs = {
-              type: type = field['type'],
-              name: name = field['name'],
+              type: field['type'],
+              name: field['name'],
               order: field['order'],
               names: names,
               namespace: namespace
