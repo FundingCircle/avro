@@ -22,6 +22,9 @@ module Avro
     LONG_RANGE = Schema::LONG_MIN_VALUE..Schema::LONG_MAX_VALUE
     COMPLEX_TYPES = [:array, :error, :map, :record, :request]
 
+    HIGHEST_FIXNUM = 4611686018427387903
+    LOWEST_BIGNUM = 4611686018427387904
+
     class Result
       attr_reader :errors
 
@@ -181,8 +184,8 @@ module Avro
         {
           NilClass => 'null',
           String => 'string',
-          Fixnum => 'int',
-          Bignum => 'long',
+          HIGHEST_FIXNUM.class => 'int',
+          LOWEST_BIGNUM.class => 'long',
           Float => 'float',
           Hash => 'record'
         }.fetch(ruby_class, ruby_class)
