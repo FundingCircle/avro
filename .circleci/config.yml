@@ -1,0 +1,21 @@
+version: 2
+jobs:
+  test:
+    docker:
+      - image: circleci/ruby:2-stretch
+    steps:
+      - checkout
+      - run:
+          name: Run tests
+          command: ./build.sh test
+          working_directory: lang/ruby
+
+  deployment:
+    docker:
+      - image: circleci/ruby:2-stretch
+    steps:
+      - checkout
+      - run:
+          name: Build gem
+          command: ./build.sh dist
+          working_directory: lang/ruby
